@@ -5,19 +5,19 @@
                 <h3>Sign In</h3>
             </div>
             <div class="card-body">
-                <form>
+                <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
                     
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
-                        <input type="text" class="form-control" placeholder="username">
+                        <input type="text" class="form-control" placeholder="username" required ngModel name="username">
                     </div>
                     
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
-                        <input type="password" class="form-control" placeholder="password">
+                        <input type="password" class="form-control" placeholder="password" required ngModel name="password">
                     </div>
 
-                    <input type="submit" value="Login" class="btn login_btn">
+                    <input [disabled]="!loginForm.valid" type="submit" value="Login" class="btn login_btn">
 
                 </form>
             </div>
