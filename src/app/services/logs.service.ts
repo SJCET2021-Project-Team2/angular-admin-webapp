@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+
+import { Logs } from '../models/logs'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogsService {
 
-  constructor() { }
+  baseUrl : string = "http://localhost:8080/logs/all"
 
-  getUserLogs(){
-    return null;
+  constructor(private http : HttpClient) { }
+
+  getUserLogs(): Observable<Logs[]>{
+    return this.http.get<Logs[]>(this.baseUrl);
   }
 
 }

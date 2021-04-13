@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Logs } from 'src/app/models/logs';
+import { LogsService } from 'src/app/services/logs.service'
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  logs : Logs[];
+  
+  constructor( private logsService : LogsService ) { }
 
   ngOnInit(): void {
+    this.logsService.getUserLogs().subscribe();
   }
 
 }
