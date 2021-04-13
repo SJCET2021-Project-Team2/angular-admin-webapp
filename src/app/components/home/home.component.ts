@@ -11,11 +11,21 @@ import { LogsService } from 'src/app/services/logs.service'
 export class HomeComponent implements OnInit {
 
   logs : Logs[];
-  
+  showLogs : boolean;
+  inputValue : any;
+
   constructor( private logsService : LogsService ) { }
 
-  ngOnInit(): void {
-    this.logsService.getUserLogs().subscribe();
+  ngOnInit(): void {   
+    this.showLogs = false; 
+  }
+
+  onSubmit(inputField) {
+    console.log(inputField.value);
+    
+    this.inputValue = inputField.value.userInput;
+    this.showLogs = true;
+    this.logsService.getUserLogs().subscribe(logs => {this.logs = logs});
   }
 
 }
