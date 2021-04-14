@@ -17,7 +17,7 @@
                         <input type="password" class="form-control" placeholder="password" required ngModel name="password">
                     </div>
 
-                    <input [disabled]="!loginForm.valid" type="submit" value="Login" class="btn login_btn">
+                    <input type="submit" value="Login" class="btn login_btn" [disabled]="!loginForm.valid"  routerLink="/home">
 
                 </form>
             </div>

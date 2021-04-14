@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit(loginForm) {
-    console.log(loginForm.value);
+    // console.log(loginForm.value);
   }
 
 }
