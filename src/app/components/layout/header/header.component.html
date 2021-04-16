@@ -1,6 +1,6 @@
 <header>
-    <!-- <div class="pull-right m-1">
-        <button class="btn btn-danger" type="button">Logout</button>
-    </div> -->
+    <div class="pull-right m-1" *ngIf="this.firebaseService.isLoggedIn">
+        <button class="btn btn-danger" type="button" (click)="onLogout()" routerLink='/'>Logout</button>
+    </div>
     <h1>Virus Tracker Logs</h1>
 </header>

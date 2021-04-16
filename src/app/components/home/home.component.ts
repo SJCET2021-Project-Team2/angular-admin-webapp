@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   constructor( private logsService : LogsService, public firebaseService : FbAuthService ) { }
 
   ngOnInit(): void {   
-    console.log("onSignin " + localStorage.getItem('user'));
     this.showLogs = false; 
   }
 
@@ -28,14 +27,4 @@ export class HomeComponent implements OnInit {
     this.showLogs = true;
     this.logsService.getUserLogs().subscribe(logs => {this.logs = logs});
   }
-
-
-  ///
-
-  onLogout(){
-    console.log("logout " + localStorage.getItem('user'));
-   this.firebaseService.logout();
-   this.firebaseService.isLoggedIn = false;
-  }
-
 }

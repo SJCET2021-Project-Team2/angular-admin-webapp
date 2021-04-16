@@ -8,18 +8,17 @@ import { FbAuthService } from 'src/app/services/fb-auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  isSignedIn : boolean = false;
+  // isSignedIn: boolean = false;
 
-  constructor(private firebaseService : FbAuthService) { }
+  constructor(public firebaseService: FbAuthService) { }
 
   ngOnInit(): void {
-    console.log("login " + localStorage.getItem('user'));
-    
-    if(localStorage.getItem('user') != 'null'){
-      this.isSignedIn = true
+
+    if (localStorage.getItem('user') != null) {
+      this.firebaseService.isLoggedIn = true
     }
-    else{
-      this.isSignedIn = false
+    else {
+      this.firebaseService.isLoggedIn = false
     }
   }
 
@@ -27,9 +26,9 @@ export class LoginComponent implements OnInit {
     const email = loginForm.value.email;
     const password = loginForm.value.password;
     await this.firebaseService.signIn(email, password);
-    
-    if(this.firebaseService.isLoggedIn){
-      this.isSignedIn = true;
+
+    if (this.firebaseService.isLoggedIn) {
+      this.firebaseService.isLoggedIn = true;
     }
   }
 }
