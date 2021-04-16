@@ -1,15 +1,15 @@
-<div class="container">
+<div class="container" *ngIf="isSignedIn">
     <div class="d-flex justify-content-center">
         <div class="card">
             <div class="card-header">
                 <h3>Sign In</h3>
             </div>
             <div class="card-body">
-                <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                <form #loginForm="ngForm" (ngSubmit)="onSignIn(loginForm)">
                     
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
-                        <input type="text" class="form-control" placeholder="username" required ngModel name="username">
+                        <input type="email" class="form-control" placeholder="email Id" required ngModel name="email">
                     </div>
                     
                     <div class="input-group">
@@ -17,7 +17,8 @@
                         <input type="password" class="form-control" placeholder="password" required ngModel name="password">
                     </div>
 
-                    <input type="submit" value="Login" class="btn login_btn" [disabled]="!loginForm.valid"  routerLink="/home">
+                    <!-- <input type="submit" value="SignIn" class="btn login_btn" [disabled]="!loginForm.valid"> -->
+                    <input type="submit" value="SignIn" class="btn login_btn" [disabled]="!loginForm.valid" [routerLink]="this.isSignedIn ? ['/home'] : ['/']">
 
                 </form>
             </div>
@@ -25,3 +26,6 @@
         </div>
     </div>
 </div>
+
+
+<app-home *ngIf="!isSignedIn"></app-home>

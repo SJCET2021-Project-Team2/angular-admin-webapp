@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Logs } from 'src/app/models/logs';
+import { FbAuthService } from 'src/app/services/fb-auth.service';
 import { LogsService } from 'src/app/services/logs.service'
 
 @Component({
@@ -14,18 +15,27 @@ export class HomeComponent implements OnInit {
   showLogs : boolean;
   inputValue : any;
 
-  constructor( private logsService : LogsService ) { }
+  constructor( private logsService : LogsService, public firebaseService : FbAuthService ) { }
 
   ngOnInit(): void {   
+    console.log("onSignin " + localStorage.getItem('user'));
     this.showLogs = false; 
   }
 
-  onSubmit(inputField) {
-    console.log(inputField.value);
-    
+  onSubmit(inputField : any) {
+    console.log(inputField.value);    
     this.inputValue = inputField.value.userInput;
     this.showLogs = true;
     this.logsService.getUserLogs().subscribe(logs => {this.logs = logs});
+  }
+
+
+  ///
+
+  onLogout(){
+    console.log("logout " + localStorage.getItem('user'));
+   this.firebaseService.logout();
+   this.firebaseService.isLoggedIn = false;
   }
 
 }

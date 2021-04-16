@@ -1,13 +1,22 @@
+<!-- <div *ngIf="this.firebaseService.isLoggedIn"> -->
+
+
+<div class="pull-right m-1">
+    <button class="btn btn-danger" type="button" (click)="onLogout()" routerLink='/'>Logout</button>
+</div>
+
+
 <div class="container">
 
     <form #inputField="ngForm" (ngSubmit)=onSubmit(inputField)>
         <div class="input-group mt-5">
-            <input type="text" class="form-control" placeholder="Enter id/phone of peson tested virus +ve" required ngModel name="userInput">
+            <input type="text" class="form-control" placeholder="Enter id/phone of peson tested virus +ve" required
+                ngModel name="userInput">
             <button class="btn btn-outline-dark" type="submit" [disabled]="!inputField.valid">Get User Logs</button>
         </div>
     </form>
 
-    <div class="card mt-5" *ngIf="showLogs" >
+    <div class="card mt-5" *ngIf="showLogs">
         <h3 class="text m-3">{{inputValue}} Logs</h3>
         <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -31,3 +40,5 @@
         </div>
     </div>
 </div>
+
+<!-- </div> -->
