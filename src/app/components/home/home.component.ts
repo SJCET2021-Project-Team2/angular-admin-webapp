@@ -11,20 +11,28 @@ import { LogsService } from 'src/app/services/logs.service'
 })
 export class HomeComponent implements OnInit {
 
-  logs : Logs[];
-  showLogs : boolean;
-  inputValue : any;
+  logs: Logs[];
+  showLogs: boolean;
+  inputValue: any;
 
-  constructor( private logsService : LogsService, public firebaseService : FbAuthService ) { }
+  constructor(private logsService: LogsService, public firebaseService: FbAuthService) { }
 
-  ngOnInit(): void {   
-    this.showLogs = false; 
+  ngOnInit(): void {
+    this.showLogs = false;
   }
 
-  onSubmit(inputField : any) {
-    console.log(inputField.value);    
-    this.inputValue = inputField.value.userInput;
+  onSubmit(inputUserId: any) {
+    this.inputValue = inputUserId.value.userInput;
     this.showLogs = true;
-    this.logsService.getUserLogs().subscribe(logs => {this.logs = logs});
+    this.logsService.getUserLogs().subscribe(logs => { this.logs = logs });
+  }
+
+  sendAlert(inputMsg: any) {
+    let msg: string = "You have been exposed to someone tested positive for virus. Stay Home Stay Safe";
+    if (inputMsg.value.alertMsg != "")
+      msg = inputMsg.value.alertMsg;
+
+    alert("Notifcation has been sent to all users")
+    // alertAllUsers(msg);
   }
 }

@@ -7,9 +7,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class FbAuthService {
 
   isLoggedIn = false
-  constructor(private firebaseAuth : AngularFireAuth) { }
-  
-  async signIn(email : string, password : string) {
+  constructor(private firebaseAuth: AngularFireAuth) { }
+
+  async signIn(email: string, password: string) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password).then(res => {
       this.isLoggedIn = true;
       localStorage.setItem('user', JSON.stringify(res.user))

@@ -1,15 +1,27 @@
 <div class="container">
 
-    <form #inputField="ngForm" (ngSubmit)=onSubmit(inputField)>
+    <form #inputUserId="ngForm" (ngSubmit)=onSubmit(inputUserId)>
         <div class="input-group mt-5">
-            <input type="text" class="form-control" placeholder="Enter id/phone of peson tested virus +ve" required
-                ngModel name="userInput">
-            <button class="btn btn-outline-dark" type="submit" [disabled]="!inputField.valid">Get User Logs</button>
+            <input type="text" autocomplete="off" class="form-control m-1"
+                placeholder="Enter id/phone of peson tested virus +ve" required ngModel name="userInput">
+            <button class="btn btn-outline-dark m-1" type="submit" [disabled]="!inputUserId.valid">Get User
+                Logs</button>
         </div>
     </form>
 
     <div class="card mt-5" *ngIf="showLogs">
-        <h3 class="text m-3">{{inputValue}} Logs</h3>
+
+        <form #inputMsg="ngForm" (ngSubmit)=sendAlert(inputMsg)>
+            <div class="input-group p-5">
+                <label class="input-group-text" id="">Alert Message</label>
+                <input type="text" autocomplete="off"
+                    placeholder="You have been exposed to someone tested positive for virus. Stay Home Stay Safe"
+                    class="form-control" required ngModel name="alertMsg">
+                <button class="btn btn-warning" type="submit">Send Alert</button>
+            </div>
+        </form>
+
+        <h3 class="text mx-3">{{inputValue}} Logs</h3>
         <div class="card-body">
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
