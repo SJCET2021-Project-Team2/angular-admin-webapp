@@ -13,6 +13,8 @@ export class FbAuthService {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password).then(res => {
       this.isLoggedIn = true;
       localStorage.setItem('user', JSON.stringify(res.user))
+    }).catch((error) => {
+      window.alert(error.message)
     });
   }
 
