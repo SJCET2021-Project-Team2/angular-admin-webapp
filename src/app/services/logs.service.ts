@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class LogsService {
 
-  baseUrl : string = "http://localhost:8080/logs/all"
+  baseUrl : string = "http://localhost:8080/logs/users/exposed/"
 
   constructor(private http : HttpClient) { }
 
-  getUserLogs(): Observable<Logs[]>{
-    return this.http.get<Logs[]>(this.baseUrl);
+  getUserLogs(userId : any): Observable<Logs[]>{
+    return this.http.get<Logs[]>(this.baseUrl + userId);
   }
 
 }
