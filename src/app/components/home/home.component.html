@@ -23,29 +23,29 @@
             <div class="col-md-3">
                 <label class="fs-6">User Id</label>
                 <h6>
-                    1010
+                    {{user.userId}}
                 </h6>
 
                 <label class="fs-6">Name</label>
                 <h6>
-                    Augustine S Aykara
+                    {{user.userName}}
                 </h6>
 
                 <label class="fs-6">Location</label>
                 <h6>
-                    Pala, Kottayam, Kerala
+                    {{user.userLocation}}
                 </h6>
 
             </div>
             <div class="col-md-3">
                 <label class="fs-6">email Id</label>
                 <h6>
-                    augustineaykara@gmail.com
+                    {{user.userMail}}
                 </h6>
 
                 <label class="fs-6">Mobile No.</label>
                 <h6>
-                    999999999
+                    {{user.userMobile}}
                 </h6>
                 <label class="fs-6">Status</label>
                 <h6>
@@ -69,7 +69,7 @@
 
         <!-- virus positive user logs -->
 
-        <h3 class="text mx-3">#{{inputValue}} Logs</h3>
+        <h3 class="text mx-3">{{user.userName}} Logs</h3>
         <div class="card-body">
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
