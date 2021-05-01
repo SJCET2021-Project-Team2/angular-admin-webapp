@@ -1,5 +1,7 @@
 <div class="container">
 
+    <!-- virus positive user input -->
+
     <form #inputUserId="ngForm" (ngSubmit)=onSubmit(inputUserId)>
         <div class="input-group mt-5">
             <input type="text" autocomplete="off" class="form-control m-1"
@@ -9,7 +11,51 @@
         </div>
     </form>
 
+
+
     <div class="card mt-5" *ngIf="showLogs">
+
+        <!-- virus postive user details -->
+
+        <div class="row mt-4">
+            <div class="col-md-3"></div>
+
+            <div class="col-md-3">
+                <label class="fs-6">User Id</label>
+                <h6>
+                    1010
+                </h6>
+
+                <label class="fs-6">Name</label>
+                <h6>
+                    Augustine S Aykara
+                </h6>
+
+                <label class="fs-6">Location</label>
+                <h6>
+                    Pala, Kottayam, Kerala
+                </h6>
+
+            </div>
+            <div class="col-md-3">
+                <label class="fs-6">email Id</label>
+                <h6>
+                    augustineaykara@gmail.com
+                </h6>
+
+                <label class="fs-6">Mobile No.</label>
+                <h6>
+                    999999999
+                </h6>
+                <label class="fs-6">Status</label>
+                <h6>
+                    <span class="badge bg-danger">Positive</span>
+                </h6>
+            </div>
+
+        </div>
+
+        <!-- alert all users exposed with virus postive user -->
 
         <form #inputMsg="ngForm" (ngSubmit)=sendAlert(inputMsg)>
             <div class="input-group p-5">
@@ -20,6 +66,8 @@
                 <button class="btn btn-warning" type="submit">Send Alert</button>
             </div>
         </form>
+
+        <!-- virus positive user logs -->
 
         <h3 class="text mx-3">#{{inputValue}} Logs</h3>
         <div class="card-body">

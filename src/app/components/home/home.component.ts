@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private logsService: LogsService, public firebaseService: FbAuthService) { }
 
   ngOnInit(): void {
-    this.showLogs = false;
+    this.showLogs = true;
   }
 
   onSubmit(inputUserId: any) {
