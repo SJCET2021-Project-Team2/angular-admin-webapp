@@ -13,7 +13,8 @@
 
 
 
-    <div class="card mt-5" *ngIf="showLogs">
+    <!-- <div class="card mt-5" *ngIf="showLogs"> -->
+    <div class="card mt-5" *ngIf="user">
 
         <!-- virus postive user details -->
 
@@ -37,7 +38,7 @@
                 </h6>
 
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label class="fs-6">email Id</label>
                 <h6>
                     {{user.userMail}}
@@ -47,11 +48,14 @@
                 <h6>
                     {{user.userMobile}}
                 </h6>
-                <label class="fs-6">Status</label>
+                <!-- <label class="fs-6">Status</label>
                 <h6>
                     <span class="badge bg-danger">Positive</span>
-                </h6>
+                </h6> -->
             </div>
+
+            <!-- <div class="col-md-3"></div> -->
+
 
         </div>
 

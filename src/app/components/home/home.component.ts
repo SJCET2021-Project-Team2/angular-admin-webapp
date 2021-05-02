@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit {
 
   logs: Logs[];
-  user : User[];
+  user: User[];
   showLogs: boolean;
   inputValue: any;
 
@@ -26,8 +26,14 @@ export class HomeComponent implements OnInit {
 
   onSubmit(inputUserId: any) {
     this.inputValue = inputUserId.value.userInput;
-    this.showLogs = true;
-    this.userService.getUserDeatils(this.inputValue).subscribe(user => { this.user = user});
+    // this.user = user     
+    this.userService.getUserDeatils(this.inputValue).subscribe((user) => {
+      this.user = user;
+      this.showLogs = true;
+    }, (error) => {
+      this.showLogs = false;
+      alert("User not exist")
+    });
     this.logsService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
   }
 
