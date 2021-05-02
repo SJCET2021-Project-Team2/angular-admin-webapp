@@ -12,50 +12,36 @@
     </form>
 
 
-
-    <!-- <div class="card mt-5" *ngIf="showLogs"> -->
     <div class="card mt-5" *ngIf="user">
-
+        
         <!-- virus postive user details -->
+        <h6 class="text-center fs-3 mt-3">{{user.userName}}</h6>
+        <div class="row">
 
-        <div class="row mt-4">
-            <div class="col-md-3"></div>
-
-            <div class="col-md-3">
-                <label class="fs-6">User Id</label>
+            <div class="col text-center">
+                <span class="badge bg-secondary mb-1">User Id</span>
                 <h6>
-                    {{user.userId}}
+                    #{{user.userId}}
                 </h6>
 
-                <label class="fs-6">Name</label>
-                <h6>
-                    {{user.userName}}
-                </h6>
-
-                <label class="fs-6">Location</label>
+                <span class="badge bg-secondary mb-1">Location</span>
                 <h6>
                     {{user.userLocation}}
                 </h6>
 
             </div>
-            <div class="col-md-4">
-                <label class="fs-6">email Id</label>
+            <div class="col text-center">
+                <span class="badge bg-secondary mb-1">email Id</span>
                 <h6>
                     {{user.userMail}}
                 </h6>
 
-                <label class="fs-6">Mobile No.</label>
+                <span class="badge bg-secondary mb-1">Mobile No.</span>
                 <h6>
                     {{user.userMobile}}
                 </h6>
-                <!-- <label class="fs-6">Status</label>
-                <h6>
-                    <span class="badge bg-danger">Positive</span>
-                </h6> -->
+
             </div>
-
-            <!-- <div class="col-md-3"></div> -->
-
 
         </div>
 

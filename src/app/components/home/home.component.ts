@@ -15,26 +15,21 @@ export class HomeComponent implements OnInit {
 
   logs: Logs[];
   user: User[];
-  showLogs: boolean;
   inputValue: any;
 
   constructor(private logsService: LogsService, public firebaseService: FbAuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.showLogs = false;
   }
 
   onSubmit(inputUserId: any) {
-    this.inputValue = inputUserId.value.userInput;
-    // this.user = user     
+    this.inputValue = inputUserId.value.userInput;  
     this.userService.getUserDeatils(this.inputValue).subscribe((user) => {
       this.user = user;
-      this.showLogs = true;
+      this.logsService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
     }, (error) => {
-      this.showLogs = false;
       alert("User not exist")
     });
-    this.logsService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
   }
 
   sendAlert(inputMsg: any) {
