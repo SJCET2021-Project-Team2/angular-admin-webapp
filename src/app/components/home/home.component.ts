@@ -20,10 +20,14 @@ export class HomeComponent implements OnInit {
   constructor(private logsService: LogsService, public firebaseService: FbAuthService, private userService: UserService) { }
 
   ngOnInit(): void {
+    // 
+    this.onSubmit(100);
   }
 
   onSubmit(inputUserId: any) {
-    this.inputValue = inputUserId.value.userInput;  
+    // 
+    this.inputValue = 100;  
+    // this.inputValue = inputUserId.value.userInput;  
     this.userService.getUserDeatils(this.inputValue).subscribe((user) => {
       this.user = user;
       this.logsService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
