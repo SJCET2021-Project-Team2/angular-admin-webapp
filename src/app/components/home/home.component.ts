@@ -1,15 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Logs } from 'src/app/models/logs';
 import { User } from 'src/app/models/user';
 import { Premises } from 'src/app/models/premises';
+
 import { FbAuthService } from 'src/app/services/fb-auth.service';
-import { LogsService } from 'src/app/services/logs.service'
-import { UserService } from 'src/app/services/user.service';
-
-
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +19,10 @@ export class HomeComponent implements OnInit {
   logs: Logs[];
   user: User[];
   selectedUser: User[];
-  selectedPremies : Premises[];
+  selectedPremises: Premises[];
   inputValue: any;
 
-  constructor(private logsService: LogsService, public firebaseService: FbAuthService, private userService: UserService, private modalService: NgbModal) { }
+  constructor(public firebaseService: FbAuthService, private apiService: ApiService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     // 
@@ -36,9 +33,9 @@ export class HomeComponent implements OnInit {
     // 
     this.inputValue = 100;
     // this.inputValue = inputUserId.value.userInput;  
-    this.userService.getUserDeatils(this.inputValue).subscribe((user) => {
+    this.apiService.getUserDeatils(this.inputValue).subscribe((user) => {
       this.user = user;
-      this.logsService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
+      this.apiService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
     }, (error) => {
       alert("User not exist")
     });
@@ -53,14 +50,14 @@ export class HomeComponent implements OnInit {
     // alertAllUsers(msg);
   }
 
-  // bootstrap model preview
-  open(content, log) {
-    this.userService.getUserDeatils(log.userId).subscribe((user) => {
+  // bootstrap modal preview
+  previewDetails(content, log) {
+    this.apiService.getUserDeatils(log.userId).subscribe((user) => {
       this.selectedUser = user;
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+      this.apiService.getPremisesDeatils(log.premisesId).subscribe((premises) => {
+        this.selectedPremises = premises;
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+      });
     });
-    
-    
-    
   }
 }

@@ -80,7 +80,10 @@
                         <td>{{log.premisesId}}</td>
                         <td>{{log.userEntryDate}}</td>
                         <td>{{log.userEntryTime}}</td>
-                        <td><span class="badge rounded-pill bg-success" (click)="open(mymodal, log)">View Details</span></td>
+                        <!-- <td><span class="badge rounded-pill bg-success" (click)="previewDetails(mymodal, log)">View Details</span></td> -->
+                        <td><span class="badge rounded-pill bg-success" (click)="previewDetails(mymodal, log)">View
+                                Details</span></td>
+
                     </tr>
                 </tbody>
 
@@ -91,12 +94,21 @@
                         {{selectedUser.userId}}
                         {{selectedUser.userName}}
                         {{selectedUser.userMobile}}
-                        {{selectedUser.userMobile}}
+                        {{selectedUser.userMail}}
                         {{selectedUser.userLocation}}
+
+                        <br>
+
+                        {{selectedPremises.premisesId}}
+                        {{selectedPremises.premisesName}}
+                        {{selectedPremises.premisesMobile}}
+                        {{selectedPremises.premisesMail}}
+                        {{selectedPremises.premisesLocation}}
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary"
-                            (click)="modal.close('Save click')">Ok</button>
+                            (click)="modal.close('Save click')">Close</button>
                     </div>
                 </ng-template>
 

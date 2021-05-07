@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Bootstrap } from 'bootstrap/dist/js/bootstrap';
+import { Component, OnInit} from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -9,16 +12,15 @@ import { Bootstrap } from 'bootstrap/dist/js/bootstrap';
 })
 export class RecordPreviewComponent implements OnInit {
 
-  modalDirect: Bootstrap.Modal;
-  @ViewChild('demoModal') input;
+  selectedUser: User[];
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
-  open(element): void {
-    this.modalDirect = new Bootstrap.Modal(element, {});
-  }
+  // previewDetails(content, log) {
+  //   this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  // }
 
 }
