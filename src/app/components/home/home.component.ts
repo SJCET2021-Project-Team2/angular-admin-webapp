@@ -4,6 +4,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { Logs } from 'src/app/models/logs';
 import { User } from 'src/app/models/user';
+import { Premises } from 'src/app/models/premises';
 import { FbAuthService } from 'src/app/services/fb-auth.service';
 import { LogsService } from 'src/app/services/logs.service'
 import { UserService } from 'src/app/services/user.service';
@@ -20,6 +21,8 @@ export class HomeComponent implements OnInit {
 
   logs: Logs[];
   user: User[];
+  selectedUser: User[];
+  selectedPremies : Premises[];
   inputValue: any;
 
   constructor(private logsService: LogsService, public firebaseService: FbAuthService, private userService: UserService, private modalService: NgbModal) { }
@@ -51,7 +54,13 @@ export class HomeComponent implements OnInit {
   }
 
   // bootstrap model preview
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  open(content, log) {
+    this.userService.getUserDeatils(log.userId).subscribe((user) => {
+      this.selectedUser = user;
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+    });
+    
+    
+    
   }
 }
