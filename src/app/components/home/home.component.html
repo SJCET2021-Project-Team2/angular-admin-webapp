@@ -13,7 +13,7 @@
 
 
     <div class="card mt-5" *ngIf="user">
-        
+
         <!-- virus postive user details -->
         <h6 class="text-center fs-3 mt-3">{{user.userName}}</h6>
         <div class="row">
@@ -70,7 +70,10 @@
                         <th>User Entry Time</th>
                     </tr>
                 </thead>
-                <tbody>
+
+
+
+                <tbody (click)="open(mymodal)">
                     <tr *ngFor="let log of logs">
                         <td>{{log.userId}}</td>
                         <td>{{log.premisesId}}</td>
@@ -78,6 +81,23 @@
                         <td>{{log.userEntryTime}}</td>
                     </tr>
                 </tbody>
+
+
+                <ng-template #mymodal let-modal>
+
+                    <div class="modal-body">
+                        username
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark"
+                            (click)="modal.close('Save click')">Ok</button>
+                    </div>
+                </ng-template>
+
+
+
+
+
             </table>
         </div>
     </div>

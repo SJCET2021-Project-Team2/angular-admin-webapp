@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Bootstrap } from 'bootstrap/dist/js/bootstrap';
+
 
 @Component({
   selector: 'app-record-preview',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordPreviewComponent implements OnInit {
 
+  modalDirect: Bootstrap.Modal;
+  @ViewChild('demoModal') input;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  open(element): void {
+    this.modalDirect = new Bootstrap.Modal(element, {});
   }
 
 }

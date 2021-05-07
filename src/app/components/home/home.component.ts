@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { Logs } from 'src/app/models/logs';
 import { User } from 'src/app/models/user';
 import { FbAuthService } from 'src/app/services/fb-auth.service';
 import { LogsService } from 'src/app/services/logs.service'
 import { UserService } from 'src/app/services/user.service';
+
+
 
 @Component({
   selector: 'app-home',
@@ -13,11 +17,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 
+
   logs: Logs[];
   user: User[];
   inputValue: any;
 
-  constructor(private logsService: LogsService, public firebaseService: FbAuthService, private userService: UserService) { }
+  constructor(private logsService: LogsService, public firebaseService: FbAuthService, private userService: UserService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     // 
@@ -26,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit(inputUserId: any) {
     // 
-    this.inputValue = 100;  
+    this.inputValue = 100;
     // this.inputValue = inputUserId.value.userInput;  
     this.userService.getUserDeatils(this.inputValue).subscribe((user) => {
       this.user = user;
@@ -43,5 +48,10 @@ export class HomeComponent implements OnInit {
 
     alert("Notifcation has been sent to all users")
     // alertAllUsers(msg);
+  }
+
+  // bootstrap model preview
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }
