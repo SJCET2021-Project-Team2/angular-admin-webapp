@@ -80,43 +80,77 @@
                         <td>{{log.premisesId}}</td>
                         <td>{{log.userEntryDate}}</td>
                         <td>{{log.userEntryTime}}</td>
-                        <!-- <td><span class="badge rounded-pill bg-success" (click)="previewDetails(mymodal, log)">View Details</span></td> -->
                         <td><span class="badge rounded-pill bg-success" (click)="previewDetails(mymodal, log)">View
                                 Details</span></td>
 
                     </tr>
                 </tbody>
 
-
-                <ng-template #mymodal let-modal>
-
-                    <div class="modal-body">
-                        {{selectedUser.userId}}
-                        {{selectedUser.userName}}
-                        {{selectedUser.userMobile}}
-                        {{selectedUser.userMail}}
-                        {{selectedUser.userLocation}}
-
-                        <br>
-
-                        {{selectedPremises.premisesId}}
-                        {{selectedPremises.premisesName}}
-                        {{selectedPremises.premisesMobile}}
-                        {{selectedPremises.premisesMail}}
-                        {{selectedPremises.premisesLocation}}
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary"
-                            (click)="modal.close('Save click')">Close</button>
-                    </div>
-                </ng-template>
-
-
-
-
-
             </table>
         </div>
     </div>
 </div>
+
+
+
+<!-- exposed user/premises detail modal -->
+
+<ng-template #mymodal let-modal>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col">
+                    <h3> <span class="badge bg-white text-dark mb-1">User Details</span></h3>
+                    <label class="badge bg-primary mb-1">User Id</label>
+                    <h6>
+                        {{selectedUser.userId}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Name</label>
+                    <h6>
+                        {{selectedUser.userName}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Mobile No</label>
+                    <h6>
+                        {{selectedUser.userMobile}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Mail Id</label>
+                    <h6>
+                        {{selectedUser.userMail}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Address</label>
+                    <h6>
+                        {{selectedUser.userLocation}}
+                    </h6>
+                </div>
+                <div class="col">
+                    <h3><span class="badge bg-white text-dark mb-1">Premises Details</span></h3>
+                    <label class="badge bg-primary mb-1">Premises Id</label>
+                    <h6>
+                        {{selectedPremises.premisesId}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Name</label>
+                    <h6>
+                        {{selectedPremises.premisesName}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Mobile No</label>
+                    <h6>
+                        {{selectedPremises.premisesMobile}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Mail Id</label>
+                    <h6>
+                        {{selectedPremises.premisesMail}}
+                    </h6>
+                    <label class="badge bg-primary mb-1">Address</label>
+                    <h6>
+                        {{selectedPremises.premisesLocation}}
+                    </h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>

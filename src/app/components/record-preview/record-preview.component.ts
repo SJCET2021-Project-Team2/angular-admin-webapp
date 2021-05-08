@@ -19,8 +19,6 @@ export class RecordPreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // previewDetails(content, log) {
-  //   this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-  // }
+  
 
 }

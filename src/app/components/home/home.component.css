@@ -1,3 +1,7 @@
-.badge {
+.badge{
+    cursor: default;
+}
+
+.rounded-pill {
     cursor: pointer;
 }
