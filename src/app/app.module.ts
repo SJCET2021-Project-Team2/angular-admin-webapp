@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/layout/header/header.component';
-import { RecordPreviewComponent } from './components/record-preview/record-preview.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4gok4qRwSIokmMDuqk0M5d4-pQ4ckH5w",
@@ -29,7 +28,6 @@ const firebaseConfig = {
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    RecordPreviewComponent
   ],
   imports: [
     BrowserModule,
