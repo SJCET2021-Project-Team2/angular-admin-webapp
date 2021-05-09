@@ -41,12 +41,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  sendAlert(inputMsg: any) {
+  sendAlert(inputMsg: any, log) {
     let msg: string = "You have been exposed to someone tested positive for virus. Stay Home Stay Safe";
     if (inputMsg.value.alertMsg != "")
       msg = inputMsg.value.alertMsg;
 
-    alert("Notifcation has been sent to all users")
+    for (const key in this.logs) {
+      if (Object.prototype.hasOwnProperty.call(this.logs, key)) {
+        const element = this.logs[key];
+        this.apiService.getUserDeatils(element.userId).subscribe((user) => {
+          console.log(user['userMail']);
+        });
+      }
+    }
     // alertAllUsers(msg);
   }
 
