@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 import { User } from '../models/user'
 import { Logs } from '../models/logs'
 import { Premises } from '../models/premises'
+import { Alert } from '../models/alert'
 
-import { Observable } from 'rxjs';
+
+
+
+const httpOptions = {
+  headers : new HttpHeaders({
+    'Content-Type' : 'application/json'
+  })
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +25,6 @@ export class ApiService {
   baseUrl_USER : string = "http://localhost:8080/user/"
   baseUrl_PREMISES : string = "http://localhost:8080/premises/"
   baseUrl_LOGS : string = "http://localhost:8080/logs/users/exposed/"
-
 
   constructor(private http : HttpClient) { }
 
@@ -31,4 +40,8 @@ export class ApiService {
     return this.http.get<Logs[]>(this.baseUrl_LOGS + userId);
   }
 
+  alertUsers(alert : Alert): Observable<Alert>{
+    const baseUrl_ALERT = "http://localhost:8080/alert/users/mail"
+    return this.http.post<Alert>(baseUrl_ALERT, alert, httpOptions);
+  }
 }

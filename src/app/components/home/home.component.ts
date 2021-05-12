@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Logs } from 'src/app/models/logs';
@@ -15,6 +15,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
+  // @Output() alertUsers: EventEmitter<Alert> = new EventEmitter();
 
   logs: Logs[];
   user: User[];
@@ -26,13 +27,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // 
-    this.onSubmit(100);
+    // this.onSubmit(100);
   }
 
   onSubmit(inputUserId: any) {
     // 
-    this.inputValue = 100;
-    // this.inputValue = inputUserId.value.userInput;  
+    // this.inputValue = 100;
+    this.inputValue = inputUserId.value.userInput;  
     this.apiService.getUserDeatils(this.inputValue).subscribe((user) => {
       this.user = user;
       this.apiService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
@@ -50,11 +51,15 @@ export class HomeComponent implements OnInit {
       if (Object.prototype.hasOwnProperty.call(this.logs, key)) {
         const element = this.logs[key];
         this.apiService.getUserDeatils(element.userId).subscribe((user) => {
-          console.log(user['userMail']);
+          const alert = {
+            userMailId : user['userMail'],
+            alertMsg : msg
+          }
+          this.apiService.alertUsers(alert).subscribe();
+          console.log("Email sent successfully to " + alert.userMailId);
         });
       }
     }
-    // alertAllUsers(msg);
   }
 
   // bootstrap modal preview
