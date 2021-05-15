@@ -5,3 +5,7 @@
 .rounded-pill {
     cursor: pointer;
 }
+
+p{
+    font-size: 15px;
+}

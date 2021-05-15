@@ -22,9 +22,9 @@ const httpOptions = {
 })
 export class ApiService {
 
-  baseUrl_USER : string = "http://localhost:8080/user/"
-  baseUrl_PREMISES : string = "http://localhost:8080/premises/"
-  baseUrl_LOGS : string = "http://localhost:8080/logs/users/exposed/"
+  baseUrl_USER : string = "https://virus-tracker-system-api.herokuapp.com/user/"
+  baseUrl_PREMISES : string = "https://virus-tracker-system-api.herokuapp.com/premises/"
+  baseUrl_LOGS : string = "https://virus-tracker-system-api.herokuapp.com/logs/users/exposed/"
 
   constructor(private http : HttpClient) { }
 

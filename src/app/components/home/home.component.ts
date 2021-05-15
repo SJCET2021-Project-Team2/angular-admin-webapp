@@ -15,8 +15,6 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  // @Output() alertUsers: EventEmitter<Alert> = new EventEmitter();
-
   logs: Logs[];
   user: User[];
   selectedUser: User[];
@@ -26,13 +24,10 @@ export class HomeComponent implements OnInit {
   constructor(public firebaseService: FbAuthService, private apiService: ApiService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    // 
-    // this.onSubmit(100);
   }
 
   onSubmit(inputUserId: any) {
-    // 
-    // this.inputValue = 100;
+    
     this.inputValue = inputUserId.value.userInput;  
     this.apiService.getUserDeatils(this.inputValue).subscribe((user) => {
       this.user = user;
