@@ -5,12 +5,14 @@
     <form #inputUserId="ngForm" (ngSubmit)=onSubmit(inputUserId)>
         <div class="input-group mt-5">
             <input type="text" autocomplete="off" class="form-control m-1"
-                placeholder="Enter id/phone of peson tested virus +ve" required ngModel name="userInput">
+                placeholder="Enter user id of person tested virus +ve" required ngModel name="userInput">
             <button class="btn btn-outline-dark m-1" type="submit" [disabled]="!inputUserId.valid">Get User
                 Logs</button>
         </div>
     </form>
 
+    <!-- Loader for http req  -->
+    <div *ngIf="loaderService.isLoading | async" class="loader">Loading...</div>
 
     <div class="card mt-5" *ngIf="user">
 
@@ -57,6 +59,7 @@
             </div>
         </form>
 
+
         <!-- virus positive user logs -->
 
         <h3 class="text mx-3">{{user.userName}} Logs</h3>
@@ -89,6 +92,7 @@
             </table>
         </div>
     </div>
+
 </div>
 
 

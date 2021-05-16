@@ -41,7 +41,8 @@ export class ApiService {
   }
 
   alertUsers(alert : Alert): Observable<Alert>{
-    const baseUrl_ALERT = "http://localhost:8080/alert/users/mail"
+    // const baseUrl_ALERT = "https://virus-tracker-system-api.herokuapp.com/alert/users/mail"
+    const baseUrl_ALERT = "https://localhost:8080/alert/users/mail"
     return this.http.post<Alert>(baseUrl_ALERT, alert, httpOptions);
   }
 }
