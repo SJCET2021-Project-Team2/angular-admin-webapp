@@ -1,7 +1,7 @@
 export class Premises {
-    premisesId : number;
+    premisesId : string;
 	premisesName : string;
-	premisesMobile : number;
+	premisesMobile : string;
 	premisesMail : string;
 	premisesLocation : string;
 }

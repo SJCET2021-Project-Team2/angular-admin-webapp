@@ -1,6 +1,6 @@
 export class Logs {
-    userId: number;
-    premisesId: number;
+    userId: string;
+    premisesId: string;
     userEntryDate: string;
     userEntryTime: string;
 }

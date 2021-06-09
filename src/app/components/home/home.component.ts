@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
       this.apiService.getUserLogs(this.inputValue).subscribe(logs => { this.logs = logs });
     }, (error) => {
       console.log(error);
+      alert("user not found")
     });
   }
 
