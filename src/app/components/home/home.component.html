@@ -23,7 +23,7 @@
             <div class="col text-center">
                 <span class="badge bg-secondary mb-1">User Id</span>
                 <h6>
-                    #{{user.userId}}
+                    {{user.userId}}
                 </h6>
 
                 <span class="badge bg-secondary mb-1">Location</span>
@@ -62,7 +62,7 @@
 
         <!-- virus positive user logs -->
 
-        <h3 class="text mx-3">{{user.userName}} Logs</h3>
+        <h3 class="text mx-3">Logs of users exposed by {{user.userName}}</h3>
         <div class="card-body">
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
@@ -131,9 +131,7 @@
                     <h3><span class="badge bg-white text-dark mb-1">Premises Details</span></h3>
                     <label class="badge bg-primary">Premises Id</label>
                     <p>
-                        <!-- {{selectedPremises.premisesId}} -->
-                        {{selectedUser.userId}}
-
+                        {{selectedPremises.premisesId}}
                     </p>
                     <label class="badge bg-primary">Name</label>
                     <p>
